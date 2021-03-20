@@ -54,6 +54,7 @@ resource "aws_alb" "alb" {
   internal        = var.internal_alb
   security_groups = [aws_security_group.security_group_alb[0].id]
   subnets         = var.subnet_ids
+  load_balancer_type = var.internal_alb ? "network" : "application"
 
   idle_timeout = var.alb_timeout
 
